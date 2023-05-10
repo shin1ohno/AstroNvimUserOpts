@@ -97,8 +97,7 @@ return {
         status.component.nav {
           -- add some padding for the percentage provider
           percentage = { padding = { right = 1 } },
-          -- disable all other providers
-          ruler = false,
+          ruler = { padding = { left = 1 } },
           scrollbar = false,
           -- use no separator and define the background color
           surround = { separator = "none", color = "file_info_bg" },
