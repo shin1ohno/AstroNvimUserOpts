@@ -8,6 +8,10 @@ return {
     local _, plenary_path = pcall(require, "plenary.path")
     local dashboard = require("alpha.themes.dashboard")
     local theme = require("alpha.themes.theta")
+    local button = require("astronvim.utils").alpha_button
+
+    math.randomseed(os.time())
+
     local function create_gradient(start, finish, steps)
       local r1, g1, b1 =
           tonumber("0x" .. start:sub(2, 3)), tonumber("0x" .. start:sub(4, 5)), tonumber("0x" .. start:sub(6, 7))
@@ -57,7 +61,8 @@ return {
       }
     end
 
-    local panda = {
+    local hello = {}
+    hello.panda = {
       [[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⣤⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   ]],
       [[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣆⠀⢀⣀⣀⣤⣤⣤⣶⣦⣤⣤⣄⣀⣀⠀⢠⣾⣿⣿⣿⣿⣿⣷⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀   ]],
       [[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠛⠿⣿⣿⣿⣿⣿⣿⣿⣿⣷⠀⠀⠀⠀⠀⠀⠀⠀   ]],
@@ -73,10 +78,30 @@ return {
       [[⠀⠀⠀⠀⠀⠀⠘⠛⠻⢿⣿⣿⣿⣿⣿⠟⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  ]],
       [[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀    ]],
     }
+    hello.vlogo = {
+      [[     .          .     ]],
+      [[   ';;,.        ::'   ]],
+      [[ ,:::;,,        :ccc, ]],
+      [[,::c::,,,,.     :cccc,]],
+      [[,cccc:;;;;;.    cllll,]],
+      [[,cccc;.;;;;;,   cllll;]],
+      [[:cccc; .;;;;;;. coooo;]],
+      [[;llll;   ,:::::'loooo;]],
+      [[;llll:    ':::::loooo:]],
+      [[:oooo:     .::::llodd:]],
+      [[.;ooo:       ;cclooo:.]],
+      [[  .;oc        'coo;.  ]],
+      [[    .'         .,.    ]],
+    }
+
+    local function get_header(headers)
+      local header_text = headers[math.random(#headers)]
+      return apply_gradient_hl(header_text)
+    end
 
     local function get_info()
       local lazy_stats = require("lazy").stats()
-      local total_plugins = "󰒲 " .. lazy_stats.loaded .. "/" .. lazy_stats.count .. " packages"
+      local total_plugins = " " .. lazy_stats.loaded .. "/" .. lazy_stats.count .. " packages"
       local datetime = os.date(" %A %B %d")
       local version = vim.version()
       local nvim_version_info = "ⓥ  " .. version.major .. "." .. version.minor .. "." .. version.patch
@@ -99,7 +124,7 @@ return {
         { type = "text", val = "Recent Files", opts = { hl = "SpecialComment", position = "center" } },
       }
 
-      local mru_list = theme.mru(1, "", max_shown)
+      local mru_list = theme.mru(0, "", max_shown)
       for _, file in ipairs(mru_list.val) do
         table.insert(tbl, file)
       end
@@ -178,9 +203,16 @@ return {
 
     theme.config.layout = {
       { type = "padding", val = 4 },
-      apply_gradient_hl(panda),
+      get_header({ hello.panda, hello.vlogo }),
       { type = "padding", val = 1 },
-      get_mru(20),
+      button("LDR n", "  New File  "),
+      button("LDR f f", "  Find File  "),
+      button("LDR f o", "󰈙  Recents  "),
+      button("LDR f w", "󰈭  Find Word  "),
+      button("LDR f '", "  Bookmarks  "),
+      button("LDR S l", "  Last Session  "),
+      { type = "padding", val = 2 },
+      get_mru(10),
       { type = "padding", val = 2 },
       get_projects(10),
       { type = "padding", val = 3 },
