@@ -101,7 +101,7 @@ return {
     separators = {
       left = { "", " " }, -- separator for the left side of the statusline
       right = { " ", "" }, -- separator for the right side of the statusline
-      tab = { "", "|" },
+      tab = { " ", "" },
     },
     -- add new colors that can be used by heirline
     colors = function(hl)
@@ -135,7 +135,7 @@ return {
     init = function()
       local get_hlgroup = require("astronvim.utils").get_hlgroup
       -- get highlights from highlight groups
-      local normal = get_hlgroup "Normal"
+      local normal = get_hlgroup("Normal")
       local fg, bg = normal.fg, normal.bg
       local bg_alt = get_hlgroup("Visual").bg
       local green = get_hlgroup("String").fg
