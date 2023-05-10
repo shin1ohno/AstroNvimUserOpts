@@ -82,7 +82,7 @@ return {
     --   },
     -- }
     require("notify").setup({
-      background_colour = require("astronvim.utils").get_hlgroup("Error").bg
+      background_colour = "#4C566A"
     })
   end,
 
