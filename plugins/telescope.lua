@@ -11,6 +11,7 @@ return {
         "--line-number",
         "--column",
         "--smart-case",
+        "--hidden",
       },
       prompt_prefix = "   ",
       selection_caret = "  ",
@@ -33,23 +34,18 @@ return {
         preview_cutoff = 120,
       },
       file_sorter = require("telescope.sorters").get_fuzzy_file,
-      file_ignore_patterns = { "node_modules" },
+      file_ignore_patterns = { "node_modules", ".git" },
       generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
       path_display = { "truncate" },
       winblend = 0,
       border = {},
-      borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+      borderchars = { "─", "", "─", "", "", "", "", "" },
       color_devicons = true,
       set_env = { ["COLORTERM"] = "truecolor" },
       file_previewer = require("telescope.previewers").vim_buffer_cat.new,
       grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
       qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
       buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
-      mappings = {
-        n = { ["q"] = require("telescope.actions").close },
-      },
     },
-
-    extensions_list = { "themes", "terms" },
   }
 }

@@ -23,6 +23,7 @@ return {
     ["<leader>b"] = { name = "Buffers" },
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+    ["<leader>ff"] = { function() require("telescope.builtin").git_files({ hidden = true }) end, desc = "Find files" },
     ["<leader>fp"] = { function() require 'telescope'.extensions.project.project() end, desc = "Find projects" },
     ["<leader>c"] = {
       function()

@@ -105,7 +105,7 @@ local M = {
       TelescopePromptTitle = { fg = bg, bg = red },
       TelescopeResultsBorder = { fg = bg, bg = bg },
       TelescopeResultsNormal = { bg = bg },
-      TelescopeResultsTitle = { fg = bg, bg = bg },
+      TelescopeResultsTitle = { fg = bg_alt, bg = bg },
     }
 
     for hl, col in pairs(hls) do
