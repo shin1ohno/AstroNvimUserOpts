@@ -1,8 +1,8 @@
-return {
+local M = {
   -- Configure AstroNvim updates
   updater = {
     remote = "origin",     -- remote to use
-    channel = "stable",    -- "stable" or "nightly"
+    channel = "nightly",   -- "stable" or "nightly"
     version = "latest",    -- "latest", tag name, or regex search like "v1.*" to only do updates before v2 (STABLE ONLY)
     branch = "nightly",    -- branch name (NIGHTLY ONLY)
     commit = nil,          -- commit hash (NIGHTLY ONLY)
@@ -102,6 +102,7 @@ return {
       left = { "", " " }, -- separator for the left side of the statusline
       right = { " ", "" }, -- separator for the right side of the statusline
       tab = { " ", "" },
+      tab_left = { "", "" },
     },
     -- add new colors that can be used by heirline
     colors = function(hl)
@@ -158,3 +159,5 @@ return {
     end,
   },
 }
+
+return M
