@@ -205,7 +205,6 @@ return {
       { type = "padding", val = 4 },
       get_header({ hello.panda, hello.vlogo }),
       { type = "padding", val = 1 },
-      button("LDR n", "  New File  "),
       button("LDR f f", "  Find File  "),
       button("LDR f o", "󰈙  Recents  "),
       button("LDR f w", "󰈭  Find Word  "),
