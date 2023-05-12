@@ -81,10 +81,6 @@ local M = {
     --     ["~/%.config/foo/.*"] = "fooscript",
     --   },
     -- }
-    require("notify").setup({
-      background_colour = "#4C566A"
-    })
-
     local get_hlgroup = require("astronvim.utils").get_hlgroup
     -- get highlights from highlight groups
     local normal = get_hlgroup("Normal")
