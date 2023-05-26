@@ -9,5 +9,15 @@ return {
   --     require("lsp_signature").setup()
   --   end,
   -- },
-  "christoomey/vim-tmux-navigator"
+  "christoomey/vim-tmux-navigator",
+  {
+    "keaising/im-select.nvim",
+    event = "BufEnter",
+    config = function()
+      require('im_select').setup {
+        set_default_events = { "VimEnter", "FocusGained", "InsertLeave", "CmdlineLeave" },
+        set_previous_events = { "InsertEnter" },
+      }
+    end
+  }
 }
