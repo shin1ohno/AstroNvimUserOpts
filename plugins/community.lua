@@ -7,6 +7,6 @@ return {
   { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.completion.copilot-lua-cmp" },
   { import = "astrocommunity.pack.haskell" },
-  { import = "astrocommunity.git.octo" },
+  { import = "astrocommunity.git.octo-nvim" },
   { import = "astrocommunity.motion.nvim-surround" }
 }
