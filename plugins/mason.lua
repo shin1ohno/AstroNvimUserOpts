@@ -15,6 +15,7 @@ return {
         "dockerls",
         "docker_compose_language_service",
         "eslint",
+        "gopls",
         "grammarly",
         "graphql",
         "html",
