@@ -14,7 +14,7 @@ return {
     "keaising/im-select.nvim",
     event = "BufEnter",
     enabled = function()
-      vim.fn.has('macunix')
+      return vim.fn.has('macunix') == 1
     end,
     config = function()
       require('im_select').setup {
