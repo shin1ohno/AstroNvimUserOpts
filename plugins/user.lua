@@ -13,6 +13,9 @@ return {
   {
     "keaising/im-select.nvim",
     event = "BufEnter",
+    enabled = function()
+      vim.fn.has('macunix')
+    end,
     config = function()
       require('im_select').setup {
         set_default_events = { "VimEnter", "FocusGained", "InsertLeave", "CmdlineLeave" },
